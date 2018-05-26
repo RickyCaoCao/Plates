@@ -25,7 +25,8 @@
         "food_img": "https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg",
         "type": "burgers",
         "rating": 5,
-        "price": "$$"
+        "price": "$$",
+        "offset": 1
     }
 ]
 ```
