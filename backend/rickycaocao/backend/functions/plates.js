@@ -11,7 +11,7 @@ const API_HEADERS = {
 }
 
 // DB Connection URL
-const DB_URL = process.env.DB_URL;
+const DB_URL = process.env.MONGO_URL;
 
 const DEFAULT_IMG_URL = 'https://img.freepik.com/free-photo/' +
   'cutlery-overhead-wooden-dining-food_1203-6082.jpg?size=338&ext=jpg';
@@ -43,23 +43,24 @@ module.exports = (category = 'food', latitude,
         $lt: count+offset
       }
     }, (plates) => {
-      //console.log(plates);
+      console.log(plates);
       callback(null, plates);
     });
   }
+  else{
+    //P2 TODO: Pricing Query
+    let query = {
+        'term': category,
+        'latitude': latitude,
+        'longitude': longitude,
+        'limit': count,
+        'offset': offset
+      };
 
-  //P2 TODO: Pricing Query
-  let query = {
-      'term': category,
-      'latitude': latitude,
-      'longitude': longitude,
-      'limit': count,
-      'offset': offset
-    };
-
-  query_yelp(query, (plates) => {
-    callback(null, plates);
-  });
+    query_yelp(query, (plates) => {
+      callback(null, plates);
+    });
+  }
 }
 
 var query_yelp = function(query, callback) {
@@ -86,13 +87,13 @@ var query_yelp = function(query, callback) {
     //TODO: Add a DB, populate with Yelp data
     //TODO: Fix Offset
     //TODO: STDLIB API Status Codes
-    callback(body.businesses.map(function(place, index) {
+    callback(body.businesses.map(function(plate, index) {
       return {
-        'name': place.name || 'NO DATA',
-        'food_img': place.image_url || DEFAULT_IMG_URL,
-        'type': place.categories[0].title || 'NO DATA',
-        'rating': place.rating || 'NO DATA',
-        'price': place.price || 'NO DATA',
+        'name': plate.name || 'NO DATA',
+        'food_img': plate.image_url || DEFAULT_IMG_URL,
+        'type': plate.categories[0].title || 'NO DATA',
+        'rating': plate.rating || 'NO DATA',
+        'price': plate.price || 'NO DATA',
         'offset': query.offset + index
       }
     }));
@@ -121,7 +122,17 @@ var findDocuments = function(db, query, callback) {
     function(err, result) {
       assert.equal(err, null);
       console.log('Retrieved plates from DB.\n');
-      callback(result);
-    });
-}
 
+      callback(result.map(function(plate, index) {
+        return {
+          'name': plate.name || 'NO DATA',
+          'food_img': plate.food_img || DEFAULT_IMG_URL,
+          'type': plate.type || 'NO DATA',
+          'rating': plate.rating || 'NO DATA',
+          'price': plate.price || 'NO DATA',
+          'offset': plate.offset || 0
+        }
+      }));
+    }
+  );
+}
