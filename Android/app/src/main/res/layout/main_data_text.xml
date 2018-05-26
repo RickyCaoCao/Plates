@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:id="@+id/main_data_text"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Name, Rating, Price, Type-->
+    <TableLayout
+        android:padding="10dp"
+        android:shrinkColumns="*"
+        android:stretchColumns="*"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TableRow
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:text="@string/nameText"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:fontAwesomeIcon="fa_android"/>
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/nameText"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:fontAwesomeIcon="fa_android"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:text="@string/ratingText"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:fontAwesomeIcon="fa_android"/>
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/ratingText"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:fontAwesomeIcon="fa_android"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:text="@string/priceText"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:fontAwesomeIcon="fa_android"/>
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/priceText"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:fontAwesomeIcon="fa_android"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:text="@string/type"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:fontAwesomeIcon="fa_android"/>
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/typeText"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:fontAwesomeIcon="fa_android"/>
+        </TableRow>
+
+    </TableLayout>
+
+</android.support.constraint.ConstraintLayout>
