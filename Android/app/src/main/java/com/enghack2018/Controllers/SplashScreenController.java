@@ -12,6 +12,8 @@ import com.enghack2018.Model.ResponseModelDO;
 import com.enghack2018.R;
 import com.enghack2018.REST.Request.Plate.PlatesRequestAsync;
 import com.enghack2018.REST.Response.AsyncCallBackResponse;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ public class SplashScreenController {
 
     public SplashScreenController(Context context){
         this.context = context;
+        this.platesRequestAsync = new PlatesRequestAsync();
     }
 
     public void fetchData(int amount){
@@ -38,8 +41,19 @@ public class SplashScreenController {
             @Override
             public void onSuccess(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 ResponseModelDO responseModelDO = new ResponseModelDO(response);
+
                 //Populate list with response, start activity with passed in data through intent
                 List<PlateDO> plateDOS = new ArrayList<>();
+                for (JsonElement element : responseModelDO.getResult()){
+                    JsonObject jsonObject = element.getAsJsonObject();
+                    plateDOS.add(new PlateDO(
+                            jsonObject.get("food_img").getAsString(),
+                            jsonObject.get("type").getAsString(),
+                            jsonObject.get("price").getAsString(),
+                            jsonObject.get("name").getAsString(),
+                            jsonObject.get("rating").getAsString()));
+                }
+
                 Intent intent = new Intent(context, MainDataActivity.class);
                 intent.putExtra("plates", (Serializable) plateDOS);
                 context.startActivity(intent);
