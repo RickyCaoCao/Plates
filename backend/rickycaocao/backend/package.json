@@ -1,11 +1,12 @@
 {
   "name": "backend",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "",
   "author": "rickycaocao <richardcao98@gmail.com>",
   "main": "functions/__main__.js",
   "dependencies": {
     "dotenv": "^5.0.1",
+    "mongodb": "^3.1.0-beta4",
     "qs": "^6.5.2",
     "request": "^2.87.0"
   },
