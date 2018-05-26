@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ShowDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/ShowDialogAnimation</item>
+    </style>
+
+    <style name="ShowDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_down_dialog</item>
+        <item name="android:windowExitAnimation">@anim/slide_up_dialog</item>
+    </style>
+
 </resources>
