@@ -40,12 +40,12 @@ public class MainDataView {
         this.viewPager.setAdapter(new FragmentPagerAdapter(this.fragmentManager) {
             @Override
             public Fragment getItem(int position) {
-                return null;
+                return fragments.get(position);
             }
 
             @Override
             public int getCount() {
-                return 0;
+                return fragments.size();
             }
         });
 

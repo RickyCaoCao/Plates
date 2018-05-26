@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.enghack2018.Model.PlateDO;
 import com.enghack2018.R;
@@ -47,26 +48,39 @@ public class FoodFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle savedOnInstance){
         this.rootView = layoutInflater.inflate(R.layout.fragment_food, viewGroup, false);
         this.context = getContext();
-        //fetch image
-        loadImageFromWebOperations(this.plateDO.getImageUrl());
         return this.rootView;
-    }
-
-    public void loadImageFromWebOperations(String url) {
-        try {
-            InputStream is = (InputStream) new URL(url).getContent();
-            Drawable d = Drawable.createFromStream(is, "src name");
-
-            //setbackground of imageview
-            ImageView imageView = this.rootView.findViewById(R.id.image);
-            imageView.setBackground(d);
-
-        } catch (Exception ignored) {
-        }
     }
 
     @Override
     public void onActivityCreated(Bundle savedOnInstance){
         super.onActivityCreated(savedOnInstance);
+
+        //fetch image
+        loadImageFromWebOperations(this.plateDO.getImageUrl());
+        populateText();
+    }
+
+    public void loadImageFromWebOperations(String url) {
+        new Thread(()-> {
+            try {
+                InputStream is = (InputStream) new URL(url).getContent();
+                Drawable d = Drawable.createFromStream(is, null);
+
+                //setbackground of imageview
+                ImageView imageView = this.rootView.findViewById(R.id.image);
+                imageView.setBackground(d);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).run();
+
+    }
+
+    private void populateText() {
+        ((TextView) this.rootView.findViewById(R.id.nameText)).setText(this.plateDO.getName());
+        ((TextView) this.rootView.findViewById(R.id.ratingText)).setText(this.plateDO.getAvgReviews());
+        ((TextView) this.rootView.findViewById(R.id.priceText)).setText(this.plateDO.getDollar());
+        ((TextView) this.rootView.findViewById(R.id.typeText)).setText(this.plateDO.getType());
     }
 }

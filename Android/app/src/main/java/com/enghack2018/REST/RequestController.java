@@ -14,7 +14,7 @@ public class RequestController {
      */
     private Retrofit retrofit = RetrofitClient.buildRetrofitClient(HOSTNAME, GsonConverterFactory.create());
 
-    public static final String HOSTNAME = "https://rickycaocao.lib.id/backend";
+    public static final String HOSTNAME = "https://rickycaocao.lib.id/backend/";
 
     private static final RequestController mInstance = new RequestController();
 

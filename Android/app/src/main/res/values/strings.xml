@@ -7,4 +7,5 @@
     <string name="ratingText">Rating</string>
     <string name="priceText">Price</string>
     <string name="type">Type</string>
+    <string name="plates">PLATES</string>
 </resources>
