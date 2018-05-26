@@ -1,8 +1,7 @@
 package com.enghack2018.Activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Window;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.enghack2018.Controllers.SplashScreenController;
