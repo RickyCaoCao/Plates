@@ -52,6 +52,9 @@ module.exports = (category = 'food', latitude,
       );
     }
 
+
+    //TODO: Add a DB, populate with Yelp data
+    //TODO: Fix Offset
     //TODO: STDLIB API Status Codes
     callback(null, body['businesses'].map(function(place) {
       return {
