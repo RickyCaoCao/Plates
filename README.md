@@ -2,6 +2,8 @@
 
 ### Backend API
 
+**Example URL**: `https://rickycaocao.lib.id/backend/plates?latitude=40.749319&longitude= -73.986089`
+
 **URL:** `https://rickycaocao.lib.id/backend/plates`
 
 **Required Params:**
