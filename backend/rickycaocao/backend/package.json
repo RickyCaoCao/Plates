@@ -7,7 +7,7 @@
   "dependencies": {
     "dotenv": "^5.0.1",
     "mongodb": "^3.1.0-beta4",
-    "qs": "^6.5.2",
+    "qs": "^6.5.3",
     "request": "^2.87.0"
   },
   "private": true,
